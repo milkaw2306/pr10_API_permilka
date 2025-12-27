@@ -11,8 +11,8 @@ namespace pr10_API_permilka
 {
     internal class Program
     {
-        static string ClientId = "***";
-        static string AuthorizationKey = "***";
+        static string ClientId = "019b553e-52ca-7f59-a3bd-d14c0ea8296f";
+        static string AuthorizationKey = "MDE5YjU1M2UtNTJjYS03ZjU5LWEzYmQtZDE0YzBlYTgyOTZmOjFmYmExOGFjLTVlNjMtNGM2YS1hZWNmLTNiZWJjN2VmMjc5Zg==";
         static async Task Main(string[] args)
         {
             string Token = await GetToken(ClientId, AuthorizationKey);
@@ -41,7 +41,7 @@ namespace pr10_API_permilka
                     HttpRequestMessage Request = new HttpRequestMessage(HttpMethod.Post, Url);
                     Request.Headers.Add("Accept", "application/json");
                     Request.Headers.Add("RqUID", rqUID);
-                    Request.Headers.Add("Authorization", $"Bearer fbearer)");
+                    Request.Headers.Add("Authorization", $"Bearer {bearer}");
                     var Data = new List<KeyValuePair<string, string>>
                     {
                         new KeyValuePair<string, string>("scope", "GIGACHAT_API_PERS")
