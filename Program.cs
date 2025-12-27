@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using pr10_API_permilka.Models.Response;
+using pr10_API_permilka.Models;
 
 namespace pr10_API_permilka
 {
@@ -15,7 +16,18 @@ namespace pr10_API_permilka
         static async Task Main(string[] args)
         {
             string Token = await GetToken(ClientId, AuthorizationKey);
-
+            if (Token == null)
+            {
+                Console.WriteLine("Не удалось получить токен");
+                return;
+            }
+            while (true)
+            {
+                Console.Write("Сообщение: ");
+                string Message = Console.ReadLine();
+                ResponseMessage Answer = await GetAnswer(Token, Message);
+                Console.WriteLine("Ответ: " + Answer.choices[0].message.content);
+            }
         }
         public static async Task<string> GetToken(string rqUID, string bearer)
         {
@@ -58,7 +70,7 @@ namespace pr10_API_permilka
                     HttpRequestMessage Request = new HttpRequestMessage(HttpMethod.Post, Url);
                     Request.Headers.Add("Accept", "application/json");
                     Request.Headers.Add("Authorization", $"Bearer {token}");
-                    Request.DataRequest = new Request()
+                    Request DataRequest = new Request()
                     {
                         model = "GigaChat",
                         stream = false,
