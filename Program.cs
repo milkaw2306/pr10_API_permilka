@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using Newtonsoft.Json;
 using pr10_API_permilka.Models.Response;
 using pr10_API_permilka.Models;
@@ -12,7 +8,7 @@ namespace pr10_API_permilka
     internal class Program
     {
         static string ClientId = "019b553e-52ca-7f59-a3bd-d14c0ea8296f";
-        static string AuthorizationKey = "MDE5YjU1M2UtNTJjYS03ZjU5LWEzYmQtZDE0YzBlYTgyOTZmOjFmYmExOGFjLTVlNjMtNGM2YS1hZWNmLTNiZWJjN2VmMjc5Zg==";
+        static string AuthorizationKey = "MDE5YjU1M2UtNTJjYS03ZjU5LWEzYmQtZDE0YzBlYTgyOTZmOmU5ZTk1OWFiLTE1NzEtNDNiOC1iNGQyLWIxOTZiNWMyMzFlYg==";
         static async Task Main(string[] args)
         {
             string Token = await GetToken(ClientId, AuthorizationKey);
