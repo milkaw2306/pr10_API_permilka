@@ -25,7 +25,6 @@ namespace pr10_API_permilka.Models.Response
             public string finish_reason { get; set; }
             public int index { get; set; }
             public Request.Message message { get; set; }
-
         }
     }
 }

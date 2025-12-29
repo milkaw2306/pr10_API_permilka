@@ -1,9 +1,9 @@
 ﻿using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using pr10_API_permilka.Models.Response;
 using pr10_API_permilka.Models;
-using Newtonsoft.Json.Linq;
-using System.Text.RegularExpressions;
 using pr10_API_permilka.Classes;
 
 namespace pr10_API_permilka
@@ -11,7 +11,7 @@ namespace pr10_API_permilka
     internal class Program
     {
         static string ClientId = "019b553e-52ca-7f59-a3bd-d14c0ea8296f";
-        static string AuthorizationKey = "MDE5YjU1M2UtNTJjYS03ZjU5LWEzYmQtZDE0YzBlYTgyOTZmOjNkNWQyZDRmLTFjOTktNGRmOC1hNDI5LWNhY2M3ZDE2NDUwZA==";
+        static string AuthorizationKey = "MDE5YjU1M2UtNTJjYS03ZjU5LWEzYmQtZDE0YzBlYTgyOTZmOjg5MWVhNDU5LTU5YTEtNDg5Zi1hNzUzLWExNzE2NzVlMmNiMw==";
         static async Task Main(string[] args)
         {
             Console.WriteLine("Для запроса генерации картинки используйте /img... \n");
@@ -163,6 +163,13 @@ namespace pr10_API_permilka
             }
             return ReturnToken;
         }
+
+        ///<summary>
+        ///Метод получения ответа
+        ///</summary>
+        ///<param name="token">Токен пользователя</param>
+        ///<param name="messages">История сообщений (диалог)</param>
+        ///<returns></returns>
         public static async Task<ResponseMessage> GetAnswer(string token, List<Request.Message> messages)
         {
             ResponseMessage responseMessage = null;
@@ -202,6 +209,12 @@ namespace pr10_API_permilka
             }
             return responseMessage;
         }
+        ///<summary>
+        ///Метод для генерации изображения
+        /// </summary>
+        /// <param name="token">Токен полльзователя</param>
+        ///<param name="messages">Сообщение пользователя</param>
+        ///<returns></returns
         public static async Task<string> GetPictureAndSave(string token, List<Models.Request.Message> messages, string clientId = null)
         {
             if (string.IsNullOrEmpty(token)) throw new ArgumentNullException(nameof(token));
